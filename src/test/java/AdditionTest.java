@@ -18,7 +18,7 @@ public class AdditionTest {
 	@Test
 	public void test() {
 		int i = addition.add(3, 7);
-		assertEquals(10, i)
+		assertEquals(10, i);
 	}
 
 	/** * destroy the object */
