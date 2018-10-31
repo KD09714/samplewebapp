@@ -17,8 +17,8 @@ public class AdditionTest {
 	/** * Test case for add method */
 	@Test
 	public void test() {
-		int i = addition.add(4, 7);
-		assertEquals(10, i);
+		int i = addition.add(3, 7);
+		assertEquals(10, i)
 	}
 
 	/** * destroy the object */
