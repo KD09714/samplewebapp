@@ -25,6 +25,9 @@
         <version>3.1.0</version>
     </dependency>
   </dependencies>
+  <properties>
+    <skipTests>true</skipTests>
+  </properties>
   <build>
     <finalName>samplewebapp</finalName>
   </build>

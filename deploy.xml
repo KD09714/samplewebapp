@@ -1,0 +1,53 @@
+<project name="deploy" default="all" basedir=".">
+
+<!-- Property Files -->	
+	<property name="env" value="QA" />
+	<property name="sleepsec" value="5" />
+	<property file="cfg/deploy-${env}.cfg" />
+	
+	<tstamp>
+		<format property="TimeStamp" pattern="yyyyMMdd-HHmm"/>
+	</tstamp>
+	<echo message="Timestamp : ${TimeStamp}"/>
+	
+	<target name="StopServices">
+		<exec executable="sc.exe" failonerror="true">
+			<arg value="config"/>
+			<arg value="${servicename}"/>
+			<arg line="start= disabled"/>
+		</exec>
+		<exec executable="sc.exe" failonerror="true">
+			<arg value="stop"/>
+			<arg value="${servicename}"/>
+		</exec>
+		<sleep seconds="${sleepsec}"/>	
+	</target>
+	
+	<target name="StartServices">
+		<exec executable="sc.exe" failonerror="${failonerror}">
+			<arg value="config"/>
+			<arg value="${servicename}"/>
+			<arg line="start= auto"/>
+		</exec>
+		<exec executable="sc.exe" failonerror="${failonerror}">
+			<arg value="start"/>
+			<arg value="${servicename}"/>
+		</exec>
+		<sleep seconds="${sleepsec}"/>	
+	</target>
+	
+	<target name="BackupCurrDeployment">
+		<move todir="${backupdir}/${warname}-${TimeStamp}" preservelastmodified="true">
+			<fileset dir="${wartarget}/${warname}"/>
+		</move>
+	</target>
+	
+	<target name="CopyExtractLatestWar">
+		<copy file="${warsource}/${warname}.war" todir="${wartarget}" preservelastmodified="true"/>
+	</target>
+	
+<!-- All Target Definition -->
+	<target name="all" depends="StopServices, BackupCurrDeployment, CopyExtractLatestWar, StartServices">
+		<echo message="Deploying Application Successful...!" />
+	</target>
+</project>
