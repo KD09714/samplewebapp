@@ -44,7 +44,7 @@ pipeline {
 		stage ('Deploy Apps to Production'){
 			agent { label 'master'}
 			steps {
-				bat "ant -f deploy.xml -env=PROD -Dbuildnum=${BUILD_NUMBER}"
+				bat "ant -f deploy.xml -Denv=PROD -Dbuildnum=${BUILD_NUMBER}"
 			}
 		}
     }
