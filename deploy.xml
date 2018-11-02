@@ -42,9 +42,12 @@
 		</move>
 	</target>
 	
-	<target name="CopyExtractLatestWar">
+	<target name="ArchiveBuild" if="archivebuild">
 		<mkdir dir="${artifactdir}/BUILD-${buildnum}" />
 		<copy file="${warsource}/${warname}.war" todir="${artifactdir}/BUILD-${buildnum}" preservelastmodified="true"/>
+	</target>
+	
+	<target name="CopyExtractLatestWar" depends="ArchiveBuild">
 		<copy file="${artifactdir}/BUILD-${buildnum}/${warname}.war" todir="${wartarget}" preservelastmodified="true"/>
 	</target>
 	
