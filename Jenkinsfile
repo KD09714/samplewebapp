@@ -34,17 +34,17 @@ pipeline {
 			}
 		}
 		
-		stage ('Approve for Prod'){
+		stage ('Approval for SIT Deploy'){
 			agent none
 			steps {
-				input 'Approve for Prod'
+				input 'Approve for SIT'
 			}
 		}
 		
-		stage ('Deploy Apps to Production'){
+		stage ('Deploy Apps to SIT Env'){
 			agent { label 'master'}
 			steps {
-				bat "ant -f deploy.xml -Denv=PROD -Dbuildnum=${BUILD_NUMBER}"
+				bat "ant -f deploy.xml -Denv=SIT -Dbuildnum=${BUILD_NUMBER}"
 			}
 		}
     }
