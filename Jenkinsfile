@@ -58,12 +58,33 @@ pipeline {
     }
 	
 	post {
-	success {
-		echo 'This is Success Case'
-	}
-	
-	failure {
-		echo 'This is Failure Case'
-	}
+success {
+emailext body:
+'''Build Number: ${BUILD_NUMBER}
+
+Build Status: ${BUILD_STATUS}
+
+Change History:
+
+${CHANGES, showPaths=true}
+
+''', recipientProviders: [developers()], subject: '$DEFAULT_SUBJECT', to: 'dharmendra329@gmail.com'
+        }
+
+failure {
+emailext body:
+'''Build Number: ${BUILD_NUMBER}
+
+Build Status: ${BUILD_STATUS}
+
+Check console output at $BUILD_URL to view the results.
+
+Change History:
+
+${CHANGES, showPaths=true}
+
+''', recipientProviders: [developers()], subject: '$DEFAULT_SUBJECT', to: 'dharmendra329@gmail.com'
+
+        }
 	}
 }
