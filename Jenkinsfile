@@ -40,5 +40,22 @@ pipeline {
 				input 'Approve for Prod'
 			}
 		}
+		
+		stage ('Deploy Apps to Production'){
+			agent { label 'master'}
+			steps {
+				bat "ant -f deploy.xml -env=PROD -Dbuildnum=${BUILD_NUMBER}"
+			}
+		}
     }
+	
+	post {
+	success {
+		echo 'This is Success Case'
+	}
+	
+	failure {
+		echo 'This is Failure Case'
+	}
+	}
 }
