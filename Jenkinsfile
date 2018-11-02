@@ -4,7 +4,10 @@ pipeline {
 		
     stages {
         stage('General SCM') {
-			git 'https://github.com/KD09714/samplewebapp.git'
+			agent { label "master"}
+			steps {
+				git 'https://github.com/KD09714/samplewebapp.git'
+			}
 		}
 		
 		stage ('Build'){
