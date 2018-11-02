@@ -1,5 +1,4 @@
 <project name="deploy" default="all" basedir=".">
-
 <!-- Property Files -->	
 	<property name="env" value="QA" />
 	<property name="sleepsec" value="5" />
@@ -37,8 +36,8 @@
 	</target>
 	
 	<target name="BackupCurrDeployment">
-		<move todir="${backupdir}/${warname}-${TimeStamp}" preservelastmodified="true">
-			<fileset dir="${wartarget}/${warname}"/>
+		<move todir="${backupdir}/${deploydir}-${TimeStamp}" preservelastmodified="true">
+			<fileset dir="${wartarget}/${deploydir}"/>
 		</move>
 	</target>
 	
@@ -48,7 +47,7 @@
 	</target>
 	
 	<target name="CopyExtractLatestWar" depends="ArchiveBuild">
-		<copy file="${artifactdir}/BUILD-${buildnum}/${warname}.war" todir="${wartarget}" preservelastmodified="true"/>
+		<copy file="${artifactdir}/BUILD-${buildnum}/${warname}.war" todir="${wartarget}/${deploydir}.war" />
 	</target>
 	
 <!-- All Target Definition -->
