@@ -1,4 +1,5 @@
 <project name="archive" default="ArchiveBuild" basedir=".">
+	<property name="env" value="QA" />
 	<property file="cfg/deploy-${env}.cfg" />
 
 	<target name="ArchiveBuild" if="archivebuild">
