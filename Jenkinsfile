@@ -11,6 +11,13 @@ pipeline {
             }
         }
 		
+		stage ('Archive'){
+            agent { label "master"}
+            steps {
+				bat "ant -f archive.xml -Dbuildnum=${BUILD_NUMBER}"
+            }
+        }
+		
 		stage ('Deploy Apps to QA'){
 			agent { label 'master'}
 			steps {

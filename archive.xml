@@ -1,0 +1,8 @@
+<project name="archive" default="ArchiveBuild" basedir=".">
+	<property file="cfg/deploy-${env}.cfg" />
+
+	<target name="ArchiveBuild" if="archivebuild">
+		<mkdir dir="${artifactdir}/BUILD-${buildnum}" />
+		<copy file="${warsource}/${warname}.war" todir="${artifactdir}/BUILD-${buildnum}" preservelastmodified="true"/>
+	</target>
+</project>
