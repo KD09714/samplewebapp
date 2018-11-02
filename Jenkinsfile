@@ -14,7 +14,7 @@ pipeline {
 		stage ('Deploy Apps'){
 			agent { label 'master'}
 			steps {
-				bat 'ant -f deploy.xml'
+				bat "ant -f deploy.xml -Dbuildnum=${BUILD_NUMBER}"
 			}
 		}
 		
