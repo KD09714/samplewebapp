@@ -1,8 +1,13 @@
 pipeline {
-    agent any
-    
+    agent none
+	options { skipDefaultCheckout(true) }
+		
     stages {
-        stage ('Build'){
+        stage('General SCM') {
+			git 'https://github.com/KD09714/samplewebapp.git'
+		}
+		
+		stage ('Build'){
             agent { label "master"}
             steps {
 				withMaven (maven : 'maven_3.5.4'){
