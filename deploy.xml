@@ -43,9 +43,9 @@
 	</target>
 	
 	<target name="CopyExtractLatestWar">
-		<mkdir dir="${artifactdir$}/BUILD-${buildnum}" />
-		<copy file="${warsource}/${warname}.war" todir="${artifactdir$}/BUILD-${buildnum}" preservelastmodified="true"/>
-		<copy file="${artifactdir$}/BUILD-${buildnum}/${warname}.war" todir="${wartarget}" preservelastmodified="true"/>
+		<mkdir dir="${artifactdir}/BUILD-${buildnum}" />
+		<copy file="${warsource}/${warname}.war" todir="${artifactdir}/BUILD-${buildnum}" preservelastmodified="true"/>
+		<copy file="${artifactdir}/BUILD-${buildnum}/${warname}.war" todir="${wartarget}" preservelastmodified="true"/>
 	</target>
 	
 <!-- All Target Definition -->
