@@ -1,0 +1,21 @@
+<project name="build" default="all" basedir=".">
+	<target name="clean">
+		<delete dir="target" />
+	</target>
+	
+	<target name="compile">
+		<mkdir dir="target/classes" />
+		<javac srcdir="src" destdir="target/classes" />
+	</target>
+	
+	<target name="createWar">
+		<war destfile="target/samplewebapp.war" webxml="src/main/webapp/WEB-INF/web.xml">
+			<fileset dir="target/classes" />
+			<fileset dir="src/main/webapp" />
+		</war>
+	</target>
+	
+	<target name="all" depends="clean, compile, createWar">
+		<echo message="Building SampleWebApp Project" />
+	</target>
+</project>
