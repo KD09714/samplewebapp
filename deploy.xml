@@ -42,7 +42,7 @@
 	</target>
 	
 	<target name="CopyExtractLatestWar" >
-		<copy file="${artifactdir}/BUILD-${buildnum}/${warname}.war" tofile="${wartarget}/${deploydir}.war" />
+		<copy file="${artifactdir}/BUILD-${buildnum}/${warname}.war" tofile="${wartarget}/${deploydir}.war" overwrite="true" />
 	</target>
 	
 <!-- All Target Definition -->
