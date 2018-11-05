@@ -4,7 +4,7 @@
 
 	<target name="ArchiveBuild" if="archivebuild">
 		<mkdir dir="${artifactdir}/BUILD-${buildnum}" />
-		<copy todir="${artifactdir}/BUILD-${buildnum}" preservelastmodified="true">
+		<copy tofile="${artifactdir}/BUILD-${buildnum}/${warname}.war" preservelastmodified="true">
 			<fileset dir="${warsource}">
 				<include name="*.war" />
 			</fileset>
